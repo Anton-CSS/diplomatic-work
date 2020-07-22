@@ -33,4 +33,4 @@ const modalWindows = () =>{
 
 modalWindows();
 
-<script src="src/modules/submitForm.js"></script>
+// export default modalWindows;
