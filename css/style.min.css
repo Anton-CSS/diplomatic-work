@@ -1610,6 +1610,7 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider {
+  position: relative;
   padding-left: 75px;
   padding-right: 75px;
   max-width: 900px;
@@ -1622,12 +1623,64 @@ nav.popup-menu .close-menu-btn img {
   width: 100%
 }
 
+.slide-gallery{
+  display: none;
+}
+
+.gallery-dots{
+  margin-top: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot{
+  width: 40px;
+  height: 5px;
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.dot-active{
+  background-color: #ffd11a;
+  opacity: 1;
+}
+.gallery-prev, .gallery-next{
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 36px;
+  height: 37px;
+  background-color: #f4c71b;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 11px;
+  z-index: 100;
+}
+
 #gallery .gallery-slider .slider-arrow {
   position: absolute;
   top: 50%;
   margin-top: -18px;
   z-index: 100;
   cursor: pointer
+}
+
+.gallery-prev--right{
+  right: 10px;
+  background-image: url(../images/arrow-right.png);
+  background-position:  center;
+  background-repeat: no-repeat;
+}
+
+.gallery-prev--left{
+  left: 10px;
+  background-image: url(../images/arrow-left.png);
+  background-position:  center;
+  background-repeat: no-repeat;
+ 
 }
 
 #gallery .gallery-slider .slider-arrow span {
