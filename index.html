@@ -25,7 +25,7 @@
                     <div class="club-select">
                         <div class="clubs-list">
                             <p>Выбрать клуб</p>
-                            <ul>
+                            <ul id="clubs-ul" class="ul-list">
                                 <li><a href="./mozaika.html">Тело мозаика</a></li>
                                 <li><a href="./schelkovo.html">Тело щелково</a></li>
                             </ul>
@@ -201,7 +201,7 @@
     <div class="wrapper">
         <h2>Записаться на бесплатный&nbsp;визит</h2>
         <div class="form-wrapper">
-            <form name="banner-form" id="banner-form" action="#" method="post">
+            <form name="banner-form" id="banner-form" action="server.php" method="post">
                 <input type="hidden" name="form_name" value=" Записаться на визит">
                 <input name="name" type="text" required placeholder="Ваше имя...">
                 <input type="tel" name="phone" id="phone" required placeholder="Ваш номер телефона...">
@@ -304,7 +304,7 @@
                 <img src="images/cards.png" alt="Клубные карты">
             </div>
             <div class="right">
-                <form action="" id="card_order">
+                <form action="server.php" id="card_order">
                     <div class="time">
                         <input id="m1" type="radio" name="card-type" value="1" checked>
                         <label for="m1">1 месяц</label>
@@ -375,7 +375,7 @@
                 </div>
             </div>
             <div class="right">
-                <form action="" id="footer_form">
+                <form action="server.php" id="footer_form">
                     <div class="content">
                         <div class="choose-club">
                             <h5>Выбрать клуб</h5>
@@ -441,7 +441,7 @@
             <img src="images/close-icon.png" alt="close" class="close_icon">
         </div>
         <div class="form-content">
-            <form name="callback-form" id="form1" action="#" method="post">
+            <form name="callback-form" id="form1" action="server.php" method="post">
                 <h4>Обратный звонок</h4>
                 <input type="hidden" name="form_name" value=" Обратный звонок">
                 <!--  <input type="hidden" name="club" value="<?=$_GET['club-name']?>"> -->
@@ -467,7 +467,7 @@
             <img src="images/close-icon.png" alt="close" class="close_icon">
         </div>
         <div class="form-content">
-            <form name="free-visit-form" id="form2" action="#" method="post">
+            <form name="free-visit-form" id="form2" action="server.php" method="post">
                 <h4>Записаться на визит</h4>
                 <input type="hidden" name="form_name" value=" Записаться на визит">
                 <p class="input-text"><input name="name" type="text" required placeholder="Ваше имя..."></p>
@@ -511,8 +511,6 @@
             <button class="btn close-btn">OK</button>
         </div>
     </div>
-
 </div>
-
 </body>
 </html>
