@@ -1028,6 +1028,10 @@ header .head .club-select .clubs-list ul {
   display: block !important;
 }
 
+.active-flex{
+  display: flex !important;
+}
+
 header .head .club-select .clubs-list ul li a {
   color: #ffd11a;
   font-size: 12px;
