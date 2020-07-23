@@ -64,6 +64,7 @@ const sliderCarousel = () => {
       document.head.appendChild(style);
     }
 
+    
     controlSlider() {
       this.next.addEventListener('click', this.nextSlider.bind(this));
       this.prev.addEventListener('click', this.prevSlider.bind(this));
@@ -74,6 +75,7 @@ const sliderCarousel = () => {
         --this.options.position;
         if (this.options.position < 0) {
           this.options.position = this.slides.length - this.slidesToShow;
+          
         }
         this.wrap.style.transform = `translateX(-${this.options.position * this.options.widthSlide}%)`;
       }
@@ -164,5 +166,5 @@ const sliderCarousel = () => {
 
 
 
-sliderCarousel();
+ sliderCarousel();
 // export default sliderCarousel;

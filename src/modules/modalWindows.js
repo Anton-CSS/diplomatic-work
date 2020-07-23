@@ -4,6 +4,7 @@ const modalWindows = () =>{
   const body = document.querySelector('body'),
       fixedGift = document.querySelector('.fixed-gift'),
       popupMenu = document.querySelector('.popup-menu'),
+      closeMenuBtn = document.querySelector('.close-menu-btn'),
       gift = document.getElementById('gift'),
       callbackForm = document.getElementById('callback_form'),
       freeVisitForm = document.getElementById('free_visit_form'),
@@ -34,6 +35,7 @@ const modalWindows = () =>{
         }
         
       });
+      
 }
 
 modalWindows();

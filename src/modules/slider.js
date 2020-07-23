@@ -25,7 +25,7 @@ const slider = () =>{
     clearInterval(interval);
   };
 
-  startSlide(10000);
+  startSlide(3000);
 
 };
 

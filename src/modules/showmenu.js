@@ -23,7 +23,7 @@ const showMenu = () =>{
             topMenu.style.top = '310px';
           }
         }
-      console.log(a);
+      
     } else{
     topMenu.style.position = 'static';
     }
