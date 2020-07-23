@@ -8,28 +8,47 @@ const calculator = () =>{
         cardOrder = document.getElementById('card_order'),
         priceMessage = document.getElementById('price-total'),
         cardLetoMozaika = document.getElementById('card_leto_mozaika'),
-        cardLetoSchelkovo = document.getElementById('card_leto_schelkovo');
+        cardLetoSchelkovo = document.getElementById('card_leto_schelkovo'),
+        messagePromo = document.querySelector('.message-promo');
 
         cardOrder.addEventListener('click', (event)=>{
           let target = event.target;
           if (target === m1 && cardLetoMozaika.checked){
-            priceMessage.textContent = '1999'
+            priceMessage.textContent = '1999';
           } else if(target === m1 && cardLetoSchelkovo.checked){
-            priceMessage.textContent = '2999'
+            priceMessage.textContent = '2999';
           } else if(target === m2 && cardLetoSchelkovo.checked){
-            priceMessage.textContent = '14990'
+            priceMessage.textContent = '14990';
           }else if(target === m2 && cardLetoMozaika.checked){
-            priceMessage.textContent = '9990'
+            priceMessage.textContent = '9990';
           }else if(target === m3 && cardLetoSchelkovo.checked){
-            priceMessage.textContent = '21990'
+            priceMessage.textContent = '21990';
           }else if(target === m3 && cardLetoMozaika.checked){
-            priceMessage.textContent = '13990'
+            priceMessage.textContent = '13990';
           }else if(target === m4 && cardLetoSchelkovo.checked){
-            priceMessage.textContent = '24990'
+            priceMessage.textContent = '24990';
           }else if(target === m4 && cardLetoMozaika.checked){
-            priceMessage.textContent = '19990'
+            priceMessage.textContent = '19990';
+          }else if(target === cardLetoMozaika){
+            priceMessage.textContent = '1999';
+            m1.checked = 'true';
+          }else if(target === cardLetoSchelkovo){
+            priceMessage.textContent = '2999';
+            m1.checked = 'true';
           }
         });
+
+        messagePromo.addEventListener('input', () =>{
+          let a = messagePromo.value.toUpperCase();
+          if(a === 'ТЕЛО2019'){
+            let a = +priceMessage.textContent,
+            b = a / 100 * 30,
+            c = Math.floor(a - b);
+            priceMessage.textContent = c;
+          }
+        });
+        
+      
 };
 
-calculator()
+calculator();
