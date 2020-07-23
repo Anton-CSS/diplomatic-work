@@ -1550,11 +1550,11 @@ nav.popup-menu .close-menu-btn img {
   text-align: center;
   margin-right: 6px;
   margin-left: 6px;
-  width: 210px
 }
 
 .services-slider .slide img {
   margin: 0 auto 19px
+  
 }
 
 .services-slider .slide h6 {
@@ -1580,7 +1580,7 @@ nav.popup-menu .close-menu-btn img {
   top: 75px;
   margin-top: -18px;
   z-index: 100;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .services-slider .slider-arrow span {
@@ -1673,6 +1673,28 @@ nav.popup-menu .close-menu-btn img {
   background-image: url(../images/arrow-right.png);
   background-position:  center;
   background-repeat: no-repeat;
+}
+#services{
+position: relative;
+z-index: 1;
+}
+
+.services-prev--right{
+  right: 0;
+  background-image: url(../images/arrow-right.png);
+  background-position:  center;
+  background-repeat: no-repeat;
+}
+
+.services-prev--left{
+  background-image: url(../images/arrow-left.png);
+  background-position:  center;
+  background-repeat: no-repeat;
+}
+
+.slider-arrow{
+  position: relative;
+  z-index: 1;
 }
 
 .gallery-prev--left{

@@ -37,6 +37,7 @@ const gallerySlider = () =>{
 
   createPrev();
   createNext();
+  
   const dot = document.querySelectorAll('.dot');
 
 
@@ -121,3 +122,5 @@ const gallerySlider = () =>{
 };
 
 gallerySlider();
+
+// export default gallerySlider;

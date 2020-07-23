@@ -10,15 +10,20 @@ import "fetch-polyfill";
 import "whatwg-fetch";
 
 import modalWindows from './modules/modalWindows';
-import maskPhone from './modules/maskPhone';
-import submitForm from './modules/submitForm';
+import gallerySlider from './modules/gallerySlider';
+import slider from './modules/slider';
 
 
 // вызов модальных окон
 modalWindows();
 
-// маска на телефон
-maskPhone();
+//вызов верхнего слайдера
+slider();
 
-// отправка форм
-submitForm();
+//вызов главного слайдера
+gallerySlider();
+
+
+
+
+
