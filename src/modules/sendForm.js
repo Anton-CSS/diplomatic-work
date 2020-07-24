@@ -74,7 +74,28 @@ const sendForm = () => {
           `
           console.log(error);
         });
-      } else{
+      } else if(event.target === cardOrder){
+        event.preventDefault();
+
+        const formData = new FormData(item);
+        let body = {};
+        formData.forEach((val, key) =>{
+        body[key] = val;
+        });
+
+        const input = cardOrder.querySelectorAll('input');
+        input.forEach(elem => elem.value = '');
+      
+        postData(body) 
+          .then((response) => {
+            if(response.status !== 200){
+              throw new Error('erorr')
+            }
+        }) 
+        .catch (() => {
+          console.log(error);
+        });
+      }else{
         event.preventDefault();
         item.appendChild(statusMessage);
         statusMessage.style.display = 'block';
