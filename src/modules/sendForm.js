@@ -6,8 +6,9 @@ const sendForm = () => {
   footerForm = document.getElementById('footer_form'),
   thanks = document.getElementById('thanks'),
   footerLetoMozaika = document.getElementById('footer_leto_mozaika'),
+  cardOrder = document.getElementById('card_order'),
   formContent = thanks.querySelector('.form-content');
-
+  
  
   name.forEach(item =>{
     item.addEventListener('input', () =>{
@@ -41,7 +42,6 @@ const sendForm = () => {
 
   form.forEach((item) =>{
     item.addEventListener('submit', (event) => {
-
       if(event.target === footerForm){
         thanks.classList.toggle('active');
 
@@ -59,13 +59,9 @@ const sendForm = () => {
           body['club-name'] = 'schelkovo';
         }
         
-        
         const input = footerForm.querySelectorAll('input');
         input.forEach(elem => elem.value = '');
-        formContent.innerHTML = `<h4>Ошибка</h4>
-        <p style="margin: auto">Попробуйте отправить сообщение позже</p>
-        `
-
+      
         postData(body) 
           .then((response) => {
             if(response.status !== 200){
@@ -73,7 +69,9 @@ const sendForm = () => {
             }
         }) 
         .catch (() => {
-
+          formContent.innerHTML = `<h4>Ошибка</h4>
+          <p style="margin: auto">Попробуйте отправить сообщение позже</p>
+          `
           console.log(error);
         });
       } else{
