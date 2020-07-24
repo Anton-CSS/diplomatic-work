@@ -309,7 +309,7 @@
                 <img src="images/cards.png" alt="Клубные карты">
             </div>
             <div class="right">
-                <form action="server.php" id="card_order">
+                <form action="server.php" method="post" id="card_order">
                     <div class="time">
                         <input id="m1" type="radio" name="card-type" value="1" checked>
                         <label for="m1">1 месяц</label>
@@ -336,7 +336,7 @@
                     </label>
                     </div>
                     <div class="price">
-                        <div class="price-message input-text"><input class="message-promo" name="name-promo" type="text" required
+                        <div class="price-message input-text"><input class="message-promo" name="name-promo" type="text"
                                                                      placeholder="Промокод"></div>
                         <div class="price-message">Цена:</div>
                         <div class="price-message" id="price-total">2999</div>

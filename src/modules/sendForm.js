@@ -59,8 +59,10 @@ const sendForm = () => {
 
   form.forEach((item) =>{
     item.addEventListener('submit', (event) => {
-      
-      document.querySelector('.required').remove();
+
+      if(document.querySelector('.required')){
+        document.querySelector('.required').remove();
+      }
 
       if(event.target === footerForm || event.target === bannerForm){
         
