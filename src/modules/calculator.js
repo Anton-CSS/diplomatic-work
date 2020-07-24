@@ -38,15 +38,52 @@ const calculator = () =>{
           }
         });
 
-        messagePromo.addEventListener('input', () =>{
-          let a = messagePromo.value.toUpperCase();
-          if(a === 'ТЕЛО2019'){
-            let a = +priceMessage.textContent,
-            b = a / 100 * 30,
-            c = Math.floor(a - b);
-            priceMessage.textContent = c;
-          }
-        });
+  messagePromo.addEventListener('input', () => {
+    let a = messagePromo.value.toUpperCase();
+    if (a === 'ТЕЛО2019') {
+
+      let a = +priceMessage.textContent,
+        b = a / 100 * 30,
+        c = Math.floor(a - b);
+      priceMessage.textContent = c;
+      cardOrder.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target === m1 && cardLetoMozaika.checked) {
+          let a = Math.floor(1999 - (1999 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m1 && cardLetoSchelkovo.checked) {
+          let a = Math.floor(2999 - (2999 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m2 && cardLetoSchelkovo.checked) {
+          let a = Math.floor(14990 - (14990 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m2 && cardLetoMozaika.checked) {
+          let a = Math.floor(9990 - (9990 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m3 && cardLetoSchelkovo.checked) {
+          let a = Math.floor(21990 - (21990 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m3 && cardLetoMozaika.checked) {
+          let a = Math.floor(13990 - (13990 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m4 && cardLetoSchelkovo.checked) {
+          let a = Math.floor(24990 - (24990 / 100 * 30));
+          priceMessage.textContent = a;
+        } else if (target === m4 && cardLetoMozaika.checked) {
+          let a = Math.floor(19990 - (19990 / 100 * 30));
+          priceMessage.textContent = a;
+        }else if(target === cardLetoMozaika){
+          let a = Math.floor(1999 - (1999 / 100 * 30));
+          priceMessage.textContent = a;
+          m1.checked = 'true';
+        }else if(target === cardLetoSchelkovo){
+          let a = Math.floor(2999 - (2999 / 100 * 30));
+          priceMessage.textContent = a;
+          m1.checked = 'true';
+        }
+      });
+    }
+  });
         
       
 };
