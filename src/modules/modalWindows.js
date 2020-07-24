@@ -10,6 +10,7 @@ const modalWindows = () =>{
       clubsUl = document.getElementById('clubs-ul'),
       thanks = document.getElementById('thanks');
 
+
       body.addEventListener('click', (event) =>{
         let target = event.target;
 
@@ -23,7 +24,6 @@ const modalWindows = () =>{
            gift.classList.remove('active');
            thanks.classList.remove('active');
            popupMenu.classList.remove('active-flex');
-           console.log('click');
          } else if(target.closest('.btn-bell')){
           callbackForm.classList.toggle('active');
          } else if(target.closest('.fixed-gift')){
@@ -31,7 +31,7 @@ const modalWindows = () =>{
           fixedGift.style.display = 'none';
          }else if(target.closest('.menu-img')){
           popupMenu.classList.toggle('active-flex');
-         } else {
+         }else {
           clubsUl.classList.remove('active');
         }
         

@@ -7,9 +7,14 @@ const sendForm = () => {
   thanks = document.getElementById('thanks'),
   footerLetoMozaika = document.getElementById('footer_leto_mozaika'),
   cardOrder = document.getElementById('card_order'),
-  formContent = thanks.querySelector('.form-content');
-  
- 
+  formContent = thanks.querySelector('.form-content'),
+  bannerForm = document.getElementById('banner-form'),
+  banner = document.getElementById('banner'),
+  bannerBtn = document.getElementById('banner-btn'),
+  inputs = cardOrder.querySelectorAll('input[name="card-type"]');
+
+  check1.setAttribute('required', '');
+
   name.forEach(item =>{
     item.addEventListener('input', () =>{
       let a = /[^а-яА-Я]/g;
@@ -22,6 +27,7 @@ const sendForm = () => {
   const message = document.createElement('div');
   message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
   message.style.color = 'steelblue';
+  message.style.margin = 'auto';
 
 
   const postData = (body) =>{
@@ -39,14 +45,36 @@ const sendForm = () => {
     message.remove();
   };
 
+  bannerBtn.addEventListener('click', () =>{
+    if(check1.checked === false){
+      let message = document.createElement('div');
+      message.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
+      message.setAttribute('class', 'required');
+      message.style.color = '#blue';
+      message.style.margin = 'auto';
+      banner.appendChild(message);
+      
+    } 
+  });
 
   form.forEach((item) =>{
     item.addEventListener('submit', (event) => {
-      if(event.target === footerForm){
+      
+      document.querySelector('.required').remove();
+
+      if(event.target === footerForm || event.target === bannerForm){
+        
+        if(check1.checked === false){
+          const message = document.createElement('div');
+          message.textContent = 'Согласие на обработку данных обязательно';
+          message.style.color = '#fff';
+          message.style.margin = 'auto';
+          banner.appendChild(message);
+          setTimeout(message.remove(), 3000);
+        } 
+
         thanks.classList.toggle('active');
-
         event.preventDefault();
-
         const formData = new FormData(item);
         let body = {};
         formData.forEach((val, key) =>{
@@ -61,6 +89,8 @@ const sendForm = () => {
         
         const input = footerForm.querySelectorAll('input');
         input.forEach(elem => elem.value = '');
+        const bannerInput = bannerForm.querySelectorAll('input');
+        bannerInput.forEach(elem => elem.value = '');
       
         postData(body) 
           .then((response) => {
@@ -76,13 +106,19 @@ const sendForm = () => {
         });
       } else if(event.target === cardOrder){
         event.preventDefault();
-
+        cardOrder.appendChild(statusMessage);
+        statusMessage.style.display = 'block';
         const formData = new FormData(item);
         let body = {};
         formData.forEach((val, key) =>{
         body[key] = val;
         });
-
+        inputs.forEach(item =>{
+          if(item.checked){
+            body['card-type'] = item.attributes[3].value;
+            body['form_name'] = 'Заказать карту';
+          }
+        });
         const input = cardOrder.querySelectorAll('input');
         input.forEach(elem => elem.value = '');
       
@@ -91,9 +127,14 @@ const sendForm = () => {
             if(response.status !== 200){
               throw new Error('erorr')
             }
+          statusMessage.style.display = 'none';
+          item.appendChild(message);
+          message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
+          setTimeout(noMessage, 3000);
         }) 
         .catch (() => {
           console.log(error);
+          statusMessage.style.display = 'none';
         });
       }else{
         event.preventDefault();
