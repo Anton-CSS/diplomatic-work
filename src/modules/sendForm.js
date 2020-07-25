@@ -67,7 +67,7 @@ const sendForm = () => {
 
   form.forEach((item) =>{
     item.addEventListener('submit', (event) => {
-      event.preventDefault();
+      
       if(document.querySelector('.required')){
         document.querySelector('.required').remove();
       }
@@ -108,7 +108,7 @@ const sendForm = () => {
           });
         
       } else if(event.target === cardOrder){
-        if (cardCheck.checked === true) {
+        if (cardCheck.checked) {
 
           event.preventDefault();
           cardOrder.appendChild(statusMessage);
@@ -155,20 +155,18 @@ const sendForm = () => {
               statusMessage.style.display = 'none';
             });
         } else{
-          cardOrderBtn.addEventListener('click', () =>{
-        
-              if(document.querySelector('.required')){
-                document.querySelector('.required').remove();
-              } else{
-                let message = document.createElement('div');
-                message.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
-                message.setAttribute('class', 'required');
-                message.style.color = '#blue';
-                message.style.margin = 'auto';
-                banner.appendChild(message);
-              } 
-
-          });
+          event.preventDefault();
+          // cardOrderBtn.addEventListener('click', () =>{
+              
+          //     let message = document.createElement('div');
+          //     message.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
+          //     message.setAttribute('class', 'required');
+          //     message.style.color = '#000';
+          //     message.style.margin = 'auto';
+          //     cardOrder.appendChild(message);
+          //     let a = document.querySelector('.required');
+              
+          // });
         }
 
       }else{
