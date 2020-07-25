@@ -38,14 +38,16 @@ const calculator = () =>{
           }
         });
 
-  messagePromo.addEventListener('input', () => {
-    let a = messagePromo.value.toUpperCase();
-    if (a === 'ТЕЛО2019') {
+  messagePromo.addEventListener('change', () => {
+    let promo = messagePromo.value.toUpperCase();
 
-      let a = +priceMessage.textContent,
+    if (promo === 'ТЕЛО2019') {
+
+        let a = +priceMessage.textContent,
         b = a / 100 * 30,
         c = Math.floor(a - b);
       priceMessage.textContent = c;
+      
       cardOrder.addEventListener('click', (event) => {
         let target = event.target;
         if (target === m1 && cardLetoMozaika.checked) {
@@ -79,6 +81,33 @@ const calculator = () =>{
         }else if(target === cardLetoSchelkovo){
           let a = Math.floor(2999 - (2999 / 100 * 30));
           priceMessage.textContent = a;
+          m1.checked = 'true';
+        } 
+      });
+    } else {
+      cardOrder.addEventListener('click', (event)=>{
+        let target = event.target;
+        if (target === m1 && cardLetoMozaika.checked){
+          priceMessage.textContent = '1999';
+        } else if(target === m1 && cardLetoSchelkovo.checked){
+          priceMessage.textContent = '2999';
+        } else if(target === m2 && cardLetoSchelkovo.checked){
+          priceMessage.textContent = '14990';
+        }else if(target === m2 && cardLetoMozaika.checked){
+          priceMessage.textContent = '9990';
+        }else if(target === m3 && cardLetoSchelkovo.checked){
+          priceMessage.textContent = '21990';
+        }else if(target === m3 && cardLetoMozaika.checked){
+          priceMessage.textContent = '13990';
+        }else if(target === m4 && cardLetoSchelkovo.checked){
+          priceMessage.textContent = '24990';
+        }else if(target === m4 && cardLetoMozaika.checked){
+          priceMessage.textContent = '19990';
+        }else if(target === cardLetoMozaika){
+          priceMessage.textContent = '1999';
+          m1.checked = 'true';
+        }else if(target === cardLetoSchelkovo){
+          priceMessage.textContent = '2999';
           m1.checked = 'true';
         }
       });

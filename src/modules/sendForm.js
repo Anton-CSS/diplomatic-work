@@ -13,7 +13,10 @@ const sendForm = () => {
   banner = document.getElementById('banner'),
   cardCheck = document.getElementById('card_check'),
   bannerBtn = document.getElementById('banner-btn'),
+  cardLetoMozaika = document.getElementById('card_leto_mozaika'),
   inputs = cardOrder.querySelectorAll('input[name="card-type"]');
+
+  console.log(m1);
 
   check1.setAttribute('required', '');
   cardCheck.setAttribute('required', '');
@@ -115,15 +118,31 @@ const sendForm = () => {
         formData.forEach((val, key) =>{
         body[key] = val;
         });
+
+
         inputs.forEach(item =>{
           if(item.checked){
             body['card-type'] = item.attributes[3].value;
             body['form_name'] = 'Заказать карту';
-          }
+          } 
         });
-        const input = cardOrder.querySelectorAll('input');
-        input.forEach(elem => elem.value = '');
-      
+
+        if(cardLetoMozaika.checked){
+          body['club-name'] = cardLetoMozaika.attributes[3].value;
+        } else{
+          body['club-name'] = 'schelkovo';
+        }
+
+        
+
+        const input1 = cardOrder.querySelector('input[name="name"]');
+        const input2 = cardOrder.querySelector('input[name="phone"]');
+        const input3 = cardOrder.querySelector('.message-promo');
+        input1.value = '';
+        input2.value = '';
+        input3.value = '';
+
+        
         postData(body) 
           .then((response) => {
             if(response.status !== 200){
