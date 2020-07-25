@@ -6,7 +6,6 @@ const slider = () =>{
   let currentSlide = 0,
       interval;
 
-
   const autoPlaySlide = () => {
 
     slideMain[currentSlide].style.display = 'none';
@@ -25,7 +24,7 @@ const slider = () =>{
     clearInterval(interval);
   };
 
-  startSlide(3000);
+  startSlide(5000);
 
 };
 

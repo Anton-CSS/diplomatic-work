@@ -118,7 +118,7 @@ const gallerySlider = () =>{
     }
   });
 
-  startSlide(9000);
+  startSlide(3000);
 };
 
 gallerySlider();

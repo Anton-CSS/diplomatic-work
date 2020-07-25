@@ -47,17 +47,17 @@ const sliderCarousel = () => {
       style.id = 'sliderCarousel-style';
       style.textContent = `
     .glo-slider{
-      overflow: hidden;
+      overflow: hidden ;
     }
     .glo-slider--wrap{
       display: flex;
-      justify-content: center;
-      transition: transform 0.5s linear;
-      transform: translateX(0);
-      will-change: transform;
+      
+      transition: transform 0.5s linear ;
+      transform: translateX(0) ;
+      will-change: transform ;
     }
     .glo-slider--item{
-      flex: 0 0 ${this.options.widthSlide}%;
+      flex: 0 0 ${this.options.widthSlide}% ;
 
     }
     `
@@ -142,11 +142,18 @@ const sliderCarousel = () => {
     }
   }
 
+  
+
+
+
+
   const caruosel = new SliderCarousel({
     main: '.slider-arrow',
     wrap: '.services-slider',
     infinity: true,
     slidesToShow: 5,
+    next: '.next',
+    prev: '.prev',
     responsive: [{
       breakpoint: 1024,
       slidesToShow: 3

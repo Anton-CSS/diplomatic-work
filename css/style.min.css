@@ -1552,8 +1552,8 @@ nav.popup-menu .close-menu-btn img {
 
 .services-slider .slide {
   text-align: center;
-  margin-right: 6px;
-  margin-left: 6px;
+  margin-right: 9px;
+  margin-left: -4px;
 }
 
 .services-slider .slide img {
@@ -1610,7 +1610,7 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-bg {
-  background: url(../images/gallery-bg.png) left center no-repeat
+  background: url(../images/gallery-bg.png) left center no-repeat;
 }
 
 #gallery .gallery-slider {
