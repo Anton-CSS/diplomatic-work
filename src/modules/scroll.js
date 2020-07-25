@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 const scroll = () =>{
   const totop = document.getElementById('totop');
   const header = document.getElementById('header');
@@ -12,7 +10,7 @@ const scroll = () =>{
      if( a > 50){
       totop.style.bottom = '10px';
      } else{
-      totop.style.bottom = '-50px';
+      totop.style.bottom = '-100px';
      }
   });
 

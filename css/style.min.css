@@ -2134,7 +2134,7 @@ footer .footer-bottom .right .socials .social-icon:hover a {
 #totop {
   display: block;
   position: fixed;
-  bottom: -50px;
+  bottom: -100px;
   right: 10px;
   z-index: 200;
   font-size: 28px;
