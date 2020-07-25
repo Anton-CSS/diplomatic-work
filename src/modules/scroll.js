@@ -1,20 +1,29 @@
 'use strict';
 
+'use strict';
+
 const scroll = () =>{
   const totop = document.getElementById('totop');
   const header = document.getElementById('header');
+
+
   window.addEventListener('scroll', function() {
-    if(pageYOffset < document.documentElement.clientHeight){
-      totop.style.display = 'block';
-    }
+    let a = document.documentElement.scrollTop;
+     if( a > 50){
+      totop.style.bottom = '10px';
+     } else{
+      totop.style.bottom = '-50px';
+     }
   });
+
+
   totop.addEventListener('click', (e) => {
     e.preventDefault();
     header.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       }); 
-  })
+  });
 }
 
 scroll();

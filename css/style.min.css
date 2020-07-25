@@ -2132,9 +2132,9 @@ footer .footer-bottom .right .socials .social-icon:hover a {
 }
 
 #totop {
-  display: none;
+  display: block;
   position: fixed;
-  bottom: 10px;
+  bottom: -50px;
   right: 10px;
   z-index: 200;
   font-size: 28px;
