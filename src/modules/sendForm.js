@@ -2,7 +2,8 @@
 
 const sendForm = () => {
   const form = document.querySelectorAll('form'),   
-  name = document.querySelectorAll('input[name="name"]'), 
+  name = document.querySelectorAll('input[name="name"]'),
+  phone = document.querySelectorAll('input[name="phone"]'),
   footerForm = document.getElementById('footer_form'),
   thanks = document.getElementById('thanks'),
   footerLetoMozaika = document.getElementById('footer_leto_mozaika'),
@@ -10,16 +11,23 @@ const sendForm = () => {
   formContent = thanks.querySelector('.form-content'),
   bannerForm = document.getElementById('banner-form'),
   banner = document.getElementById('banner'),
+  cardCheck = document.getElementById('card_check'),
   bannerBtn = document.getElementById('banner-btn'),
   inputs = cardOrder.querySelectorAll('input[name="card-type"]');
 
   check1.setAttribute('required', '');
+  cardCheck.setAttribute('required', '');
 
   name.forEach(item =>{
+    item.setAttribute('required', '');
     item.addEventListener('input', () =>{
       let a = /[^а-яА-Я]/g;
       item.value = item.value.replace(a, '');
     });
+  });
+
+  phone.forEach(item =>{
+    item.setAttribute('required', '');
   });
 
   const statusMessage = document.createElement('div');
@@ -53,9 +61,10 @@ const sendForm = () => {
       message.style.color = '#blue';
       message.style.margin = 'auto';
       banner.appendChild(message);
-      
     } 
   });
+
+  
 
   form.forEach((item) =>{
     item.addEventListener('submit', (event) => {
@@ -65,15 +74,6 @@ const sendForm = () => {
       }
 
       if(event.target === footerForm || event.target === bannerForm){
-        
-        if(check1.checked === false){
-          const message = document.createElement('div');
-          message.textContent = 'Согласие на обработку данных обязательно';
-          message.style.color = '#fff';
-          message.style.margin = 'auto';
-          banner.appendChild(message);
-          setTimeout(message.remove(), 3000);
-        } 
 
         thanks.classList.toggle('active');
         event.preventDefault();

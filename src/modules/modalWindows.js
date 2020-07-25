@@ -8,8 +8,11 @@ const modalWindows = () =>{
       callbackForm = document.getElementById('callback_form'),
       freeVisitForm = document.getElementById('free_visit_form'),
       clubsUl = document.getElementById('clubs-ul'),
+      cardCheck = document.getElementById('card_check'),
+      cardOrder = document.getElementById('card_order'),
+      scroll = document.querySelectorAll('.scroll'),
       thanks = document.getElementById('thanks');
-
+      
 
       body.addEventListener('click', (event) =>{
         let target = event.target;
@@ -30,6 +33,17 @@ const modalWindows = () =>{
           gift.classList.toggle('active');
           fixedGift.style.display = 'none';
          }else if(target.closest('.menu-img')){
+          popupMenu.classList.toggle('active-flex');
+         }else if(target.closest('.card-order-btn')){
+          if(cardCheck.checked === false){
+            let message = document.createElement('div');
+            message.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
+            message.setAttribute('class', 'required');
+            message.style.color = '#000';
+            message.style.margin = 'auto';
+            cardOrder.appendChild(message);
+          } 
+         }else if(target.closest('.scroll')){
           popupMenu.classList.toggle('active-flex');
          }else {
           clubsUl.classList.remove('active');
