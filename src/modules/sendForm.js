@@ -6,7 +6,7 @@ const sendForm = () => {
   footerForm = document.getElementById('footer_form'),
   thanks = document.getElementById('thanks'),
   footerLetoMozaika = document.getElementById('footer_leto_mozaika'),
-  cardOrderBtn = document.querySelector('.card-order-btn'),
+  footerLetoSchelkovo = document.getElementById('footer_leto_schelkovo'),
   cardOrder = document.getElementById('card_order'),
   formContent = thanks.querySelector('.form-content'),
   bannerForm = document.getElementById('banner-form'),
@@ -73,39 +73,45 @@ const sendForm = () => {
       }
 
       if(event.target === footerForm || event.target === bannerForm){
+        if (footerLetoMozaika.checked || footerLetoSchelkovo.checked) {
+          
+          event.preventDefault();
+          const formData = new FormData(item);
+          let body = {};
+          formData.forEach((val, key) => {
+            body[key] = val;
+          });
 
-        thanks.classList.toggle('active');
-        event.preventDefault();
-        const formData = new FormData(item);
-        let body = {};
-        formData.forEach((val, key) =>{
-        body[key] = val;
-        });
+          if (footerLetoMozaika.checked) {
+            body['club-name'] = 'mozaika';
+          } else {
+            body['club-name'] = 'schelkovo';
+          }
 
-        if(footerLetoMozaika.checked){
-          body['club-name'] = 'mozaika';
-        }else{
-          body['club-name'] = 'schelkovo';
-        }
-        
-        const input = footerForm.querySelectorAll('input');
-        input.forEach(elem => elem.value = '');
-        const bannerInput = bannerForm.querySelectorAll('input');
-        bannerInput.forEach(elem => elem.value = '');
+          const input = footerForm.querySelectorAll('input');
+          input.forEach(elem => elem.value = '');
+          const bannerInput = bannerForm.querySelectorAll('input');
+          bannerInput.forEach(elem => elem.value = '');
 
 
-          postData(body) 
-          .then((response) => {
-            if(response.status !== 200){
-              throw new Error('erorr')
-            }
-          }) 
-          .catch (() => {
-          formContent.innerHTML = `<h4>Ошибка</h4>
+          postData(body)
+            .then((response) => {
+              if (response.status !== 200) {
+                throw new Error('status network not 200');
+              }
+              thanks.classList.toggle('active');
+            })
+            .catch((error) => {
+              thanks.classList.toggle('active');
+              formContent.innerHTML = `<h4>Ошибка</h4>
           <p style="margin: auto">Попробуйте отправить сообщение позже</p>
           `
-          console.log(error);
-          });
+             console.log(error);
+            });
+        } else{
+          event.preventDefault();
+        }
+        
         
       } else if(event.target === cardOrder){
         if (cardCheck.checked) {
