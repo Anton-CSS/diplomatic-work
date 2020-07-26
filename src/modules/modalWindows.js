@@ -8,10 +8,7 @@ const modalWindows = () =>{
       callbackForm = document.getElementById('callback_form'),
       freeVisitForm = document.getElementById('free_visit_form'),
       clubsUl = document.getElementById('clubs-ul'),
-      cardCheck = document.getElementById('card_check'),
-      cardOrder = document.getElementById('card_order'),
       thanks = document.getElementById('thanks');
-      
 
       body.addEventListener('click', (event) =>{
         let target = event.target;
@@ -21,11 +18,16 @@ const modalWindows = () =>{
         } else if(target.closest('.open-popup')){
           freeVisitForm.classList.toggle('active');
          } else if(target.closest('.overlay') || target.closest('.close-form') || target.closest('.close-btn')|| target.closest('.close-menu-btn') || target.closest('.close_icon') || target.closest('.close-btn')){
-           freeVisitForm.classList.remove('active');
-           callbackForm.classList.remove('active');
-           gift.classList.remove('active');
-           thanks.classList.remove('active');
-           popupMenu.classList.remove('active-flex');
+          
+          thanks.classList.remove('active');
+          freeVisitForm.classList.remove('active');
+          callbackForm.classList.remove('active');
+
+          if(gift){
+            gift.classList.remove('active');
+          }
+          
+          popupMenu.classList.remove('active-flex');
          } else if(target.closest('.btn-bell')){
           callbackForm.classList.toggle('active');
          } else if(target.closest('.fixed-gift')){
