@@ -13,7 +13,8 @@ const sendForm = () => {
   banner = document.getElementById('banner'),
   cardCheck = document.getElementById('card_check'),
   bannerBtn = document.getElementById('banner-btn'),
-  cardLetoMozaika = document.getElementById('card_leto_mozaika'),
+  input1 = cardOrder.querySelector('input[name="name"]'),
+  input2 = cardOrder.querySelector('input[name="phone"]'),
   inputs = cardOrder.querySelectorAll('input[name="card-type"]');
 
 
@@ -114,9 +115,11 @@ const sendForm = () => {
         
         
       } else if(event.target === cardOrder){
-        if (cardCheck.checked) {
-
-          event.preventDefault();
+        if (cardCheck.checked === true) {
+          if(input1.value === '' && input2.value === ''){
+            event.preventDefault();
+          } else{
+             event.preventDefault();
           cardOrder.appendChild(statusMessage);
           statusMessage.style.display = 'block';
           const formData = new FormData(item);
@@ -127,52 +130,38 @@ const sendForm = () => {
 
 
           inputs.forEach(item => {
-            if (item.checked) {
+            if (item.checked){
               body['card-type'] = item.attributes[3].value;
               body['form_name'] = 'Заказать карту';
             }
           });
 
-          if (cardLetoMozaika.checked) {
-            body['club-name'] = cardLetoMozaika.attributes[3].value;
-          } else {
-            body['club-name'] = 'schelkovo';
-          }
-
-          const input1 = cardOrder.querySelector('input[name="name"]');
-          const input2 = cardOrder.querySelector('input[name="phone"]');
           const input3 = cardOrder.querySelector('.message-promo');
           input1.value = '';
           input2.value = '';
-          input3.value = '';
-
+          if(input3){
+            input3.value = '';
+          }
+      
           postData(body)
             .then((response) => {
               if (response.status !== 200) {
-                throw new Error('erorr');
+                throw new Error('status network not 200');
               }
               statusMessage.style.display = 'none';
               item.appendChild(message);
-              message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
+              message.style.textAlign = 'center';
+              message.style.fontSize = '20px';
               setTimeout(noMessage, 3000);
             })
-            .catch(() => {
+            .catch((error) => {
               console.log(error);
               statusMessage.style.display = 'none';
             });
+          }
+         
         } else{
-          event.preventDefault();
-          // cardOrderBtn.addEventListener('click', () =>{
-              
-          //     let message = document.createElement('div');
-          //     message.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
-          //     message.setAttribute('class', 'required');
-          //     message.style.color = '#000';
-          //     message.style.margin = 'auto';
-          //     cardOrder.appendChild(message);
-          //     let a = document.querySelector('.required');
-              
-          // });
+             event.preventDefault();
         }
 
       }else{
@@ -196,7 +185,6 @@ const sendForm = () => {
             }
           statusMessage.style.display = 'none';
           item.appendChild(message);
-          message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
           setTimeout(noMessage, 3000);
         }) 
         .catch (() => {
