@@ -61,67 +61,11 @@ const sendForm = () => {
         document.querySelector('.required').remove();
       }
 
-      if(event.target === cardOrder){
-        if (cardCheck.checked === true) {
-          if(input1.value === '' || input2.value === ''){
-            event.preventDefault();
-          } else{
-             event.preventDefault();
-          cardOrder.appendChild(statusMessage);
-          statusMessage.style.display = 'block';
-          const formData = new FormData(item);
-          let body = {};
-          formData.forEach((val, key) => {
-            body[key] = val;
-          });
-
-
-          inputs.forEach(item => {
-            if (item.checked){
-              body['card-type'] = item.attributes[3].value;
-              body['form_name'] = 'Заказать карту';
-            }
-          });
-
-          const input3 = cardOrder.querySelector('.message-promo');
-          input1.value = '';
-          input2.value = '';
-          if(input3){
-            input3.value = '';
-          }
-      
-          postData(body)
-            .then((response) => {
-              if (response.status !== 200) {
-                throw new Error('status network not 200');
-              }
-              statusMessage.style.display = 'none';
-              item.appendChild(message);
-              message.style.textAlign = 'center';
-              message.style.fontSize = '20px';
-              setTimeout(noMessage, 3000);
-            })
-            .catch((error) => {
-              statusMessage.style.display = 'none';
-              message.textContent = 'ОШИБКА';
-              message.style.textAlign = 'center';
-              message.style.fontSize = '20px';
-              item.appendChild(message);
-              setTimeout(noMessage, 3000);
-              console.log(error);
-              
-            });
-          }
-         
-        } else{
-             event.preventDefault();
-        }
-
-      } else if(event.target === form2 || event.target === form1|| event.target === bannerForm || event.target === footerForm ){
+      if(event.target === form2 || event.target === form1|| event.target === bannerForm || event.target === footerForm || event.target === cardOrder){
         
         let target = event.target;
         
-          if(check2.checked || check.checked || check1.checked || footerLetoMozaika.checked || footerLetoSchelkovo.checked){
+          if(check2.checked || check.checked || check1.checked || cardCheck.checked || footerLetoMozaika.checked || footerLetoSchelkovo.checked){
             
             const formPhone = target.querySelector('input[name="phone"]'),
                   formName = target.querySelector('input[name="name"]');
@@ -134,10 +78,10 @@ const sendForm = () => {
                 event.preventDefault();
               } else{
                 event.preventDefault();
-                footerLetoSchelkovo.checked = false;
                 check1.checked = false;
                 check2.checked = false;
                 check.checked = false;
+                cardCheck.checked = false;
                 target.appendChild(statusMessage);
                 statusMessage.style.display = 'block';
 
@@ -146,13 +90,29 @@ const sendForm = () => {
                 formData.forEach((val, key) => {
                   body[key] = val;
                 });
-                console.log(footerLetoMozaika.checked);
+                
                 if(target === footerForm && footerLetoMozaika.checked) {
                     body['club-name'] = 'mozaika';
-                  } else {
+                  } else if(target === footerForm && footerLetoSchelkovo.checked){
                     body['club-name'] = 'schelkovo';
                   }
                 footerLetoMozaika.checked = false;
+                footerLetoSchelkovo.checked = false;
+
+                if(target === cardOrder ){
+                  inputs.forEach(item => {
+                    if (item.checked){
+                      body['card-type'] = item.attributes[3].value;
+                      body['form_name'] = 'Заказать карту';
+                    }
+                  });
+                }
+                
+                const input3 = cardOrder.querySelector('.message-promo');
+                
+                if(input3){
+                  input3.value = '';
+                }
 
                 const input = target.querySelectorAll('input');
                 input.forEach(elem => elem.value = '');
@@ -166,7 +126,13 @@ const sendForm = () => {
                     if (target === footerForm) {
                       thanks.classList.toggle('active');
                       statusMessage.style.display = 'none';
-                    } else {
+                    } else if(target === cardOrder){
+                      statusMessage.style.display = 'none';
+                      item.appendChild(message);
+                      message.style.textAlign = 'center';
+                      message.style.fontSize = '20px';
+                      setTimeout(noMessage, 3000);
+                    }else {
                       statusMessage.style.display = 'none';
                       target.appendChild(message);
                       setTimeout(noMessage, 3000);
@@ -180,6 +146,14 @@ const sendForm = () => {
                      <p style="margin: auto">Попробуйте отправить сообщение позже</p>
                      `
                       console.log(error);
+                    } else if(target === cardOrder){
+                      statusMessage.style.display = 'none';
+                      message.textContent = 'ОШИБКА';
+                      message.style.textAlign = 'center';
+                      message.style.fontSize = '20px';
+                      item.appendChild(message);
+                      setTimeout(noMessage, 3000);
+                      console.log(error);
                     } else {
                       statusMessage.style.display = 'none';
                       message.textContent = 'ОШИБКА';
@@ -190,15 +164,25 @@ const sendForm = () => {
                   });
               }
             }
-          } else if(check1.checked === false ){
+          } else if(check1.checked === false && target === bannerForm){
               let bannerMessage = document.createElement('div');
               bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
               bannerMessage.setAttribute('class', 'required');
               bannerMessage.style.color = '#blue';
               bannerMessage.style.margin = 'auto';
               banner.appendChild(bannerMessage);
+
               event.preventDefault();
-          }else{
+          }else if(cardCheck.checked === false && target === cardOrder){
+            let bannerMessage = document.createElement('div');
+              bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
+              bannerMessage.setAttribute('class', 'required');
+              bannerMessage.style.color = '#blue';
+              bannerMessage.style.margin = 'auto';
+              cardOrder.appendChild(bannerMessage);
+              
+              event.preventDefault();
+          } else{
             event.preventDefault();
           }
       }
