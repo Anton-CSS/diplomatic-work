@@ -52,5 +52,5 @@ const maskPhone = () => {
 
     });
 };
-maskPhone();
-// export default maskPhone;
+// maskPhone();
+export default maskPhone;

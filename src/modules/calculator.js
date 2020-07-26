@@ -122,4 +122,6 @@ const calculator = () =>{
       
 };
 
-calculator();
+// calculator();
+
+export default calculator;

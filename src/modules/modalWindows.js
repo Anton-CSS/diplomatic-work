@@ -45,6 +45,6 @@ const modalWindows = () =>{
       
 }
 
-modalWindows();
+// modalWindows();
 
-// export default modalWindows;
+export default modalWindows;
