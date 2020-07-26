@@ -168,7 +168,8 @@ const sendForm = () => {
               let bannerMessage = document.createElement('div');
               bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
               bannerMessage.setAttribute('class', 'required');
-              bannerMessage.style.color = '#blue';
+              bannerMessage.style.color = '#000';
+              bannerMessage.style.textAlign = 'center';
               bannerMessage.style.margin = 'auto';
               banner.appendChild(bannerMessage);
 
@@ -177,7 +178,8 @@ const sendForm = () => {
             let bannerMessage = document.createElement('div');
               bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
               bannerMessage.setAttribute('class', 'required');
-              bannerMessage.style.color = '#blue';
+              bannerMessage.style.color = '#000';
+              bannerMessage.style.textAlign = 'center';
               bannerMessage.style.margin = 'auto';
               cardOrder.appendChild(bannerMessage);
               

@@ -9,8 +9,10 @@ const calculator = () =>{
         priceMessage = document.getElementById('price-total'),
         cardLetoMozaika = document.getElementById('card_leto_mozaika'),
         cardLetoSchelkovo = document.getElementById('card_leto_schelkovo'),
+        inputName = cardOrder.querySelector('input[name="name"]'),
+        inputPhone = cardOrder.querySelector('input[name="phone"]'),
         messagePromo = document.querySelector('.message-promo');
-
+        console.dir(inputPhone);
         cardOrder.addEventListener('click', (event)=>{
           let target = event.target;
           if (target === m1 && cardLetoMozaika.checked){
@@ -38,10 +40,12 @@ const calculator = () =>{
           }
         });
 
-  messagePromo.addEventListener('change', () => {
+  messagePromo.addEventListener('input', () => {
     let promo = messagePromo.value.toUpperCase();
 
     if (promo === 'ТЕЛО2019') {
+        
+      messagePromo.setAttribute('disabled', 'disabled');
 
         let a = +priceMessage.textContent,
         b = a / 100 * 30,
@@ -85,6 +89,7 @@ const calculator = () =>{
         } 
       });
     } else {
+      
       cardOrder.addEventListener('click', (event)=>{
         let target = event.target;
         if (target === m1 && cardLetoMozaika.checked){
