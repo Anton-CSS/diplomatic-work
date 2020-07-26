@@ -2624,7 +2624,10 @@ p.personal-data input[type=checkbox]:checked+label:before {
     margin-top: 30px;
     text-align: center
   }
-
+  .services-slider .slide{
+    margin-right: 35px;
+    margin-left: -4px;
+  }
   .main-slider .slide .slide-text .offer-head .top,
   .main-slider .slide.type2 .slide-text .offer-head .top {
     font-size: 27px;
