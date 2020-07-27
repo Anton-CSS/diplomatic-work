@@ -123,6 +123,7 @@ const sendForm = () => {
                     if (response.status !== 200) {
                       throw new Error('status network not 200');
                     }
+                    
                     if (target === footerForm) {
                       thanks.classList.toggle('active');
                       statusMessage.style.display = 'none';
@@ -140,12 +141,14 @@ const sendForm = () => {
 
                   })
                   .catch((error) => {
+
                     if (target === footerForm) {
                       thanks.classList.toggle('active');
                       formContent.innerHTML = `<h4>Ошибка</h4>
                      <p style="margin: auto">Попробуйте отправить сообщение позже</p>
                      `
                       console.log(error);
+
                     } else if(target === cardOrder){
                       statusMessage.style.display = 'none';
                       message.textContent = 'ОШИБКА';
@@ -154,6 +157,7 @@ const sendForm = () => {
                       item.appendChild(message);
                       setTimeout(noMessage, 3000);
                       console.log(error);
+
                     } else {
                       statusMessage.style.display = 'none';
                       message.textContent = 'ОШИБКА';
@@ -168,7 +172,7 @@ const sendForm = () => {
               let bannerMessage = document.createElement('div');
               bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
               bannerMessage.setAttribute('class', 'required');
-              bannerMessage.style.color = '#000';
+              bannerMessage.style.color = 'steelblue';
               bannerMessage.style.textAlign = 'center';
               bannerMessage.style.margin = 'auto';
               banner.appendChild(bannerMessage);
@@ -178,7 +182,7 @@ const sendForm = () => {
             let bannerMessage = document.createElement('div');
               bannerMessage.textContent = 'Согласие на обработку данных обязательно'.toLocaleUpperCase();
               bannerMessage.setAttribute('class', 'required');
-              bannerMessage.style.color = '#000';
+              bannerMessage.style.color = 'steelblue';
               bannerMessage.style.textAlign = 'center';
               bannerMessage.style.margin = 'auto';
               cardOrder.appendChild(bannerMessage);
@@ -192,4 +196,5 @@ const sendForm = () => {
   });
 };
 
-sendForm();
+// sendForm();
+export default sendForm;

@@ -12,6 +12,14 @@ import "whatwg-fetch";
 import modalWindows from './modules/modalWindows';
 import gallerySlider from './modules/gallerySlider';
 import slider from './modules/slider';
+import maskPhone from './modules/maskPhone';
+import sendForm from './modules/sendForm';
+import calculator from './modules/calculator';
+import sliderCarousel from './modules/sliderCarusel';
+import scroll from './modules/scroll';
+import showMenu from './modules/showmenu';
+
+
 
 
 // вызов модальных окон
@@ -22,6 +30,24 @@ slider();
 
 //вызов главного слайдера
 gallerySlider();
+
+//маска телефона
+maskPhone();
+
+//формы
+sendForm();
+
+//калькулятор
+calculator();
+
+//слайдер-карусель
+sliderCarousel();
+
+//скролл
+scroll();
+
+//показ меню
+showMenu();
 
 
 

@@ -121,6 +121,5 @@ const gallerySlider = () =>{
   startSlide(3000);
 };
 
-gallerySlider();
-
-// export default gallerySlider;
+//gallerySlider();
+ export default gallerySlider;

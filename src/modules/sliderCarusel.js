@@ -173,5 +173,5 @@ const sliderCarousel = () => {
 
 
 
- sliderCarousel();
-// export default sliderCarousel;
+// sliderCarousel();
+ export default sliderCarousel;
