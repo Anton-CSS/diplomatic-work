@@ -113,9 +113,11 @@ const calculator = () => {
   callbackFormName.addEventListener('input', () =>{
     let promo = messagePromo.value.toUpperCase();
     if (promo === 'ТЕЛО2019') {
+      m1.checked = 'true';
       let a = Math.floor(2999 - (2999 / 100 * 30));
       priceMessage.textContent = a;
       }else {
+      m1.checked = 'true';
       priceMessage.textContent = 2999;
     }
   });
@@ -124,9 +126,11 @@ const calculator = () => {
   callbackFormPhone.addEventListener('input', () =>{
     let promo = messagePromo.value.toUpperCase();
     if (promo === 'ТЕЛО2019') {
+      m1.checked = 'true';
       let a = Math.floor(2999 - (2999 / 100 * 30));
       priceMessage.textContent = a;
       }else {
+      m1.checked = 'true';
       priceMessage.textContent = 2999;
     }
   });  

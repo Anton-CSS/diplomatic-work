@@ -17,8 +17,14 @@ const sendForm = () => {
   check = document.getElementById('check'),
   check1 = document.getElementById('check1'),
   check2 = document.getElementById('check2'),
-  input1 = cardOrder.querySelector('input[name="name"]'),
-  input2 = cardOrder.querySelector('input[name="phone"]'),
+  cardLetoMozaika = document.getElementById('card_leto_mozaika'),
+  cardLetoSchelkovo = document.getElementById('card_leto_schelkovo'),
+  m1 = document.getElementById('m1'),
+  m2 = document.getElementById('m2'),
+  m3 = document.getElementById('m3'),
+  m4 = document.getElementById('m4'),
+  messagePromo = document.querySelector('.message-promo'),
+  priceMessage = document.getElementById('price-total'),
   inputs = cardOrder.querySelectorAll('input[name="card-type"]');
 
 
@@ -114,17 +120,50 @@ const sendForm = () => {
                   input3.value = '';
                 }
 
-                const input = target.querySelectorAll('input');
-                input.forEach(elem => elem.value = '');
-                
+                const inputName = target.querySelectorAll('input[name="name"]'),
+                      inputPhone = target.querySelectorAll('[name="phone"]');
+                inputName.forEach(elem => elem.value = '');
+                inputPhone.forEach(elem => elem.value = '');
+                m1.checked = 'true';
+                priceMessage.textContent = 1999;
+                cardLetoSchelkovo.checked;
+                messagePromo.textContent = '';
 
+                cardOrder.addEventListener('click', (event) => {
+                  let target = event.target;
+                  if (target === m1 && cardLetoMozaika.checked) {
+                    priceMessage.textContent = '1999';
+                  } else if (target === m1 && cardLetoSchelkovo.checked) {
+                    priceMessage.textContent = '2999';
+                  } else if (target === m2 && cardLetoSchelkovo.checked) {
+                    priceMessage.textContent = '14990';
+                  } else if (target === m2 && cardLetoMozaika.checked) {
+                    priceMessage.textContent = '9990';
+                  } else if (target === m3 && cardLetoSchelkovo.checked) {
+                    priceMessage.textContent = '21990';
+                  } else if (target === m3 && cardLetoMozaika.checked) {
+                    priceMessage.textContent = '13990';
+                  } else if (target === m4 && cardLetoSchelkovo.checked) {
+                    priceMessage.textContent = '24990';
+                  } else if (target === m4 && cardLetoMozaika.checked) {
+                    priceMessage.textContent = '19990';
+                  } else if (target === cardLetoMozaika) {
+                    priceMessage.textContent = '1999';
+                    m1.checked = 'true';
+                  } else if (target === cardLetoSchelkovo) {
+                    priceMessage.textContent = '2999';
+                    m1.checked = 'true';
+                  }
+                });
+                
                 postData(body)
                   .then((response) => {
+                    console.log(response);
                     if (response.status !== 200) {
                       throw new Error('status network not 200');
                     }
                     
-                    if (target === footerForm) {
+                    if (target === footerForm || target === bannerForm) {
                       thanks.classList.toggle('active');
                       statusMessage.style.display = 'none';
                     } else if(target === cardOrder){
@@ -138,11 +177,12 @@ const sendForm = () => {
                       target.appendChild(message);
                       setTimeout(noMessage, 3000);
                     }
-
+                    
                   })
                   .catch((error) => {
 
-                    if (target === footerForm) {
+                    if (target === footerForm || target === bannerForm) {
+                      statusMessage.style.display = 'none';
                       thanks.classList.toggle('active');
                       formContent.innerHTML = `<h4>Ошибка</h4>
                      <p style="margin: auto">Попробуйте отправить сообщение позже</p>
@@ -196,5 +236,5 @@ const sendForm = () => {
   });
 };
 
-// sendForm();
+ //sendForm();
 export default sendForm;
