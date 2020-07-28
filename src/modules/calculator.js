@@ -43,7 +43,25 @@ const calculator = () => {
 
   messagePromo.addEventListener('input', (event) => {
     let promo = messagePromo.value.toUpperCase();
-    if (promo === 'ТЕЛО2019') {
+    if (promo === 'ТЕЛО2019'){
+      if(priceMessage.textContent === '1999' || priceMessage.textContent === '2999' || priceMessage.textContent === '9990' || priceMessage.textContent === '13990' || priceMessage.textContent === '14990' || priceMessage.textContent === '19990' || priceMessage.textContent === '24990' || priceMessage.textContent === '21990'){
+        let b = +priceMessage.textContent;
+        priceMessage.textContent = Math.floor(b - (b / 100 * 30));
+      } 
+      }else if(promo !== 'ТЕЛО2019') {
+      
+      priceMessage.textContent = (priceMessage.textContent === '1399') ? priceMessage.textContent = '1999' : priceMessage.textContent;
+      priceMessage.textContent = (priceMessage.textContent === '2099') ? priceMessage.textContent = '2999' : priceMessage.textContent;
+      priceMessage.textContent = (priceMessage.textContent === '10493') ? priceMessage.textContent = '14990' : priceMessage.textContent;
+      priceMessage.textContent = (priceMessage.textContent === '15393') ? priceMessage.textContent = '21990' : priceMessage.textContent;
+      if(priceMessage.textContent === '17493'){
+        priceMessage.textContent = '24990';
+      }
+      priceMessage.textContent = (priceMessage.textContent === '6993') ? priceMessage.textContent = '14990' : priceMessage.textContent;
+      priceMessage.textContent = (priceMessage.textContent === '9793') ? priceMessage.textContent = '13990' : priceMessage.textContent;
+      priceMessage.textContent = (priceMessage.textContent === '13993') ? priceMessage.textContent = '19990' : priceMessage.textContent;
+      
+   
       cardOrder.addEventListener('click', (event) => {
         let target = event.target;
         if (target === m1 && cardLetoMozaika.checked) {
@@ -158,5 +176,5 @@ const calculator = () => {
 };
 
 
-//  calculator();
-export default calculator;
+ calculator();
+// export default calculator;
