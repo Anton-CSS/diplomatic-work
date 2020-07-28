@@ -176,5 +176,5 @@ const calculator = () => {
 };
 
 
- calculator();
-// export default calculator;
+// calculator();
+ export default calculator;
