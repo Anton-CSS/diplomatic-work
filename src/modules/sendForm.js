@@ -45,7 +45,6 @@ const sendForm = () => {
 
 
   const postData = (body) =>{
-    
     return fetch('./server.php', {
       method: 'POST',
       headers: {
@@ -124,10 +123,12 @@ const sendForm = () => {
                       inputPhone = target.querySelectorAll('[name="phone"]');
                 inputName.forEach(elem => elem.value = '');
                 inputPhone.forEach(elem => elem.value = '');
-                m1.checked = 'true';
-                priceMessage.textContent = 1999;
-                cardLetoSchelkovo.checked;
-                messagePromo.textContent = '';
+                if(m1 && cardLetoSchelkovo && messagePromo && priceMessage){
+                  m1.checked = 'true';
+                  cardLetoSchelkovo.checked;
+                  messagePromo.textContent = ''; 
+                  priceMessage.textContent = 1999;
+                }
 
                 cardOrder.addEventListener('click', (event) => {
                   let target = event.target;
@@ -169,12 +170,14 @@ const sendForm = () => {
                     } else if(target === cardOrder){
                       statusMessage.style.display = 'none';
                       item.appendChild(message);
+                      message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
                       message.style.textAlign = 'center';
                       message.style.fontSize = '20px';
                       setTimeout(noMessage, 3000);
                     }else {
                       statusMessage.style.display = 'none';
                       target.appendChild(message);
+                      message.textContent = 'Заявка отправлена! Наши менеджеры обязательно свяжутся с вами';
                       setTimeout(noMessage, 3000);
                     }
                     
@@ -236,5 +239,5 @@ const sendForm = () => {
   });
 };
 
- //sendForm();
+// sendForm();
 export default sendForm;
