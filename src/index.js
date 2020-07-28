@@ -14,7 +14,7 @@ import gallerySlider from './modules/gallerySlider';
 import slider from './modules/slider';
 import maskPhone from './modules/maskPhone';
 import sendForm from './modules/sendForm';
-// import calculator from './modules/calculator';
+import calculator from './modules/calculator';
 import sliderCarousel from './modules/sliderCarusel';
 import scroll from './modules/scroll';
 import showMenu from './modules/showmenu';
@@ -38,7 +38,7 @@ maskPhone();
 sendForm();
 
 //калькулятор
-//  calculator();
+ calculator();
 
 //слайдер-карусель
 sliderCarousel();
