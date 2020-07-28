@@ -166,6 +166,10 @@ const sendForm = () => {
                     
                     if (target === footerForm || target === bannerForm) {
                       thanks.classList.toggle('active');
+                      formContent.innerHTML = `<h4>СПАСИБО!</h4>
+                     <p style="margin: auto">Ваша заявка отправлена.
+                     Мы свяжемся с вами в ближайшее время.</p>
+                     `
                       statusMessage.style.display = 'none';
                     } else if(target === cardOrder){
                       statusMessage.style.display = 'none';
